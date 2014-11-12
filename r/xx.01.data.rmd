@@ -1,0 +1,80 @@
+---
+title: "GEM Date Import and Structure Report"
+output:
+  pdf_document:
+    highlight: tango
+    fig_width: 7
+    fig_height: 6
+    fig_caption: true
+    toc: true
+    toc_depth: 4
+    number_sections: true
+---
+
+# GEM Data
+
+```{r, results='asis', echo=F, message=FALSE, warning=FALSE}
+# Loads foreign library to open `.sav` files
+library("foreign")
+
+# Creates the `data` directory if not exists
+dir.create("../data/")
+
+for(cnt.data in 3134:3135){
+
+  # Downloads data
+  download.file(
+    sprintf("http://www.gemconsortium.org/docs/download/%s", cnt.data)
+    , sprintf("../data/%s.zip", cnt.data)
+    , method="wget"
+  )
+
+  # Unzips data
+  unzip(
+    sprintf("../data/%s.zip", cnt.data)
+    , exdir=sprintf("../data/%s/", cnt.data)
+  )
+
+  data.name <- list.files(
+    sprintf("../data/%s/", cnt.data)
+  )[[1]]
+
+  sav <- list.files(
+    sprintf("../data/%s/", cnt.data)
+    , pattern="sav", recursive=T
+  )[1]
+
+  sav <- sprintf("../data/%s/%s", cnt.data, sav)
+
+  file.rename(sav, sprintf("../data/%s.sav", cnt.data))
+
+
+  # Loads spss file
+  gem <- read.spss(sprintf("../data/%s.sav", cnt.data))
+
+  # Saves the dataframe as `.rdata`
+  save(gem, file=sprintf("../data/%s.rdata", cnt.data))
+
+  # Cleanings
+
+  ## Frees memory
+  rm (gem)
+
+  ## Unlinks (~deletes) temp files
+  unlink(
+    c(
+      sprintf("../data/%s/", cnt.data)
+      ,sprintf("../data/%s.zip", cnt.data)
+    )
+    , recursive=T
+  )
+
+  cat(paste0("\n\n## ", data.name, "\n\n"))
+  cat(paste0("\n\n  * Original file: `data/", cnt.data, ".sav `\n\n"))
+  cat(paste0("\n\n  * Imported file: `data/", cnt.data, ".rdata `\n\n"))
+
+}
+```
+
+
+
