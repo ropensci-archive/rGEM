@@ -1,28 +1,30 @@
-# Loads configurations
-#source("config.R")
+#' Downloads a set of GEM data and restores it in gem.path
+#' @description Downloads a set of public GEM data from the GEM project website
+#' @param gem.file.id if true, leave the downloaded zip files in your 'gem.path', if FALSE, they will be deleted
+#' @param keepZip if true, leave the downloaded zip files in your 'gem.path', if FALSE, they will be deleted
 
-get.gem.data <- function(cnt.data){
+get_gem_data <- function(gem.file.id, keepZip=FALSE){
+
+  check_path()
+
+  load_config()
+
   # Downloads data
   download.file(
-                paste0(gem.base.url, cnt.data)
-                , sprintf("../data/%s.zip", cnt.data)
+                paste0(gem.base.url, gem.file.id)
+                , sprintf("%s/%s.zip", options("gem.path"), gem.file.id)
                 , method="wget"
   )
 
   # Unzips data
-  unzip <- unzip(
-                 sprintf("../data/%s.zip", cnt.data)
-                 , exdir=sprintf("../data/%s/", cnt.data)
+  unzip(
+                 sprintf("%s/%s.zip", options("gem.path"), gem.file.id)
+                 , exdir=sprintf("%s/%s/", options("gem.path"), gem.file.id)
   )
-
-  # Jump empty files
-  if(length(unzip)==0){
-    next
-  }
 
   # Reads the dir name
   dir.name <- list.files(
-                         sprintf("../data/%s/", cnt.data)
+                         sprintf("%s/%s/", options("gem.path"), gem.file.id)
   )
 
   # Extracts the year and set title
@@ -40,22 +42,22 @@ get.gem.data <- function(cnt.data){
   level <- gsub(c(".sav"), "", level)
 
   # Dirtyfixes GEM data publication inconsistencies
-  if(cnt.data == "388"){
+  if(gem.file.id == "388"){
     set <- "aps";
-    file.rename("../data/388/GEM 2000 Adult Pop Data.POR"
-                ,"../data/388/GEM 2000 Adult Pop Data.por")
+    file.rename(sprintf("%s/388/GEM 2000 Adult Pop Data.POR", options("gem.path")) 
+                ,sprintf("%s/388/GEM 2000 Adult Pop Data.por", options("gem.path")))
     level <- ""
   }
 
   # Looks for `.sav` files
   sav <- list.files(
-                    sprintf("../data/%s/", cnt.data)
+                    sprintf("%s/%s/", options("gem.path"), gem.file.id)
                     , pattern="sav", recursive=T
   )
 
   # Looks for `.por` files
   por <- list.files(
-                    sprintf("../data/%s/", cnt.data)
+                    sprintf("%s/%s/", options("gem.path"), gem.file.id)
                     , pattern="por", recursive=T
   )
 
@@ -63,7 +65,7 @@ get.gem.data <- function(cnt.data){
   if (length(sav)){
 
     # Loads spss file
-    gem <- read.spss(sprintf("../data/%s/%s", cnt.data, sav))
+    gem <- read.spss(sprintf("%s/%s/%s", options("gem.path"), gem.file.id, sav))
 
   }
 
@@ -71,13 +73,14 @@ get.gem.data <- function(cnt.data){
   if(length(por)){
 
     # Loads spss file
-    gem <- spss.portable.file(sprintf("../data/%s/%s", cnt.data, por))
+    gem <- spss.portable.file(sprintf("%s/%s/%s", options("gem.path"), gem.file.id, por))
 
   }
 
   # Saves the dataframe as `.rda`
   gem.file <- sprintf(
-                      "../data/gem.%s.%s.%s.rda"
+                      "%s/gem.%s.%s.%s.rda"
+                      , options("gem.path")
                       , year
                       , set
                       , gsub(" ",".",tolower(level))
@@ -90,20 +93,26 @@ get.gem.data <- function(cnt.data){
   rm (gem)
 
   ## Unlinks (~deletes) temp files
+         print(sprintf("%s/%s/", options("gem.path"), gem.file.id))
   unlink(
-         c(
-           sprintf("../data/%s/", cnt.data)
-           ,sprintf("../data/%s.zip", cnt.data)
-           )
+         sprintf("%s/%s/", options("gem.path"), gem.file.id)
          , recursive=T
-  )
+         )
+
+  ## Unlinks (~deletes) temp files if not keepZip
+  if(!keepZip){
+    unlink(
+           sprintf("%s/%s.zip", options("gem.path"), gem.file.id)
+           , recursive=T
+           )
+  }
 
   # Returns an array
   return(
          c("Year"=year
            , "Set"=toupper(set)
            , "Level"=level
-           , "File"=gsub("../data/", "", gem.file)
+           , "File"=gsub(sprintf("%s/", options("gem.path")), "", gem.file.id)
            )
   )
 }
