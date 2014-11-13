@@ -1,3 +1,7 @@
+# base URL to GEM data download
+gem.base.url <- "http://www.gemconsortium.org/docs/download/"
+
+# List of GEM public data
 # Extracted manually from www.gemconsortium.org
 # date: 13/11/2014
 gem.public.urls <- c(
