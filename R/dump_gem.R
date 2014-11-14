@@ -12,7 +12,7 @@ dump_gem  <- function(keepZip = FALSE){
   # Loads configuration 
   load_config()
 
-  load("../data/gem_list.rda")
+  load("data/gem_list.rda")
 
   print(gem.list)
 
@@ -32,9 +32,6 @@ dump_gem  <- function(keepZip = FALSE){
 
   # Puts the dump.list in order
   dump.list <- dump.list[ order(dump.list[,4]), ]
-
-  # Saves the dump.list
-  save(dump.list, file="../data/dump_list.rda")
 
   # Returns the results
   return(dump.list)

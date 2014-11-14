@@ -53,6 +53,6 @@ load_config <- function(){
   #gem.list <- gem.list[ order(gem.list[,1], gem.list[,2], gem.list[,3]), ]
   #gem.list <- data.frame(gem.list)
   #names(gem.list) <- c("year", "set", "level", "download.id")
-  #save(gem.list, file="../data/gem_list.rda")
+  #save(gem.list, file="data/gem_list.rda")
 
   # If you have access to other GEM data override here

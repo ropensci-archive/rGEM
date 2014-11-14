@@ -13,7 +13,7 @@ get_gem_data <- function(gem.file.id, skipExisting=TRUE, keepZip=FALSE){
 
   load_config()
 
-  load("../data/gem_list.rda")
+  load("data/gem_list.rda")
 
   # Downloads data
   download.file(
