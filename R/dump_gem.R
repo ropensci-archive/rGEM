@@ -14,10 +14,10 @@ dump_gem  <- function(keepZip = FALSE){
 
   load("../data/gem_list.rda")
 
+  print(gem.list)
+
   # A list to Keep the list of imported datasets
   dump.list <- list()
-
-  print(gem.urls)
 
   # For all GEM public data
   for(cnt.data in gem.list$download.id){

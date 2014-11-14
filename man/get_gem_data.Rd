@@ -3,12 +3,17 @@
 \alias{get_gem_data}
 \title{Downloads a set of GEM data and restores it in gem.path}
 \usage{
-get_gem_data(gem.file.id, keepZip = FALSE)
+get_gem_data(gem.file.id, skipExisting = TRUE, keepZip = FALSE)
 }
 \arguments{
-\item{gem.file.id}{if true, leave the downloaded zip files in your 'gem.path', if FALSE, they will be deleted}
+\item{gem.file.id}{if true, leave the downloaded zip files in your
+'gem.path', if FALSE, they will be deleted}
 
-\item{keepZip}{if true, leave the downloaded zip files in your 'gem.path', if FALSE, they will be deleted}
+\item{skipExisting}{if true, skips files already downloaded, if FALSE, they
+will be downloaded again and overwritten}
+
+\item{keepZip}{if true, leave the downloaded zip files in your 'gem.path',
+if FALSE, they will be deleted}
 }
 \description{
 Downloads a set of public GEM data from the GEM project website

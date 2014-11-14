@@ -1,5 +1,2 @@
-data/*.zip
-data/*.sav
-data/*.rdata
 .Rproj.user
 ..Rcheck/00check.log

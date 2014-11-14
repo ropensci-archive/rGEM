@@ -52,7 +52,7 @@ load_config <- function(){
   #gem.list <- matrix(gem.public.data, ncol=4, byrow=T)
   #gem.list <- gem.list[ order(gem.list[,1], gem.list[,2], gem.list[,3]), ]
   #gem.list <- data.frame(gem.list)
-  #names(gem.list) <- c("year", "set", "level", "id")
+  #names(gem.list) <- c("year", "set", "level", "download.id")
   #save(gem.list, file="../data/gem_list.rda")
 
   # If you have access to other GEM data override here
