@@ -1,13 +1,19 @@
 #' Downloads a set of GEM data and restores it in gem.path
 #' @description Downloads a set of public GEM data from the GEM project website
-#' @param gem.file.id if true, leave the downloaded zip files in your 'gem.path', if FALSE, they will be deleted
-#' @param keepZip if true, leave the downloaded zip files in your 'gem.path', if FALSE, they will be deleted
+#' @param gem.file.id if true, leave the downloaded zip files in your
+#' 'gem.path', if FALSE, they will be deleted
+#' @param skipExisting if true, skips files already downloaded, if FALSE, they
+#' will be downloaded again and overwritten
+#' @param keepZip if true, leave the downloaded zip files in your 'gem.path',
+#' if FALSE, they will be deleted
 
-get_gem_data <- function(gem.file.id, keepZip=FALSE){
+get_gem_data <- function(gem.file.id, skipExisting=TRUE, keepZip=FALSE){
 
   check_path()
 
   load_config()
+
+  load("../data/gem_list.rda")
 
   # Downloads data
   download.file(
@@ -112,7 +118,8 @@ get_gem_data <- function(gem.file.id, keepZip=FALSE){
          c("Year"=year
            , "Set"=toupper(set)
            , "Level"=level
-           , "File"=gsub(sprintf("%s/", options("gem.path")), "", gem.file.id)
+           , "File"=gsub(sprintf("%s/", options("gem.path")), "", gem.file)
+           , "Id"=gem.file.id
            )
   )
 }

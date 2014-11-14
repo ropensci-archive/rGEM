@@ -12,29 +12,32 @@ dump_gem  <- function(keepZip = FALSE){
   # Loads configuration 
   load_config()
 
+  load("../data/gem_list.rda")
+
   # A list to Keep the list of imported datasets
-  gem.list <- list()
+  dump.list <- list()
 
   print(gem.urls)
 
   # For all GEM public data
-  for(cnt.data in gem.urls){
-
-  print(cnt.data)
+  for(cnt.data in gem.list$download.id){
 
     # Downloads the data
-    tmp.verbose <- get_gem_data(cnt.data, keepZip=keepZip)
+    gem.set <- get_gem_data(cnt.data, keepZip=keepZip)
 
     # Keeps the data info in a list
-    gem.list <- rbind(gem.list, tmp.verbose)
+    dump.list <- rbind(dump.list, gem.set, )
 
   }
 
-  # Puts the gem.list in order
-  gem.list <- gem.list[ order(gem.list[,4]), ]
+  # Puts the dump.list in order
+  dump.list <- dump.list[ order(dump.list[,4]), ]
+
+  # Saves the dump.list
+  save(dump.list, file="../data/dump_list.rda")
 
   # Returns the results
-  return(gem.list)
+  return(dump.list)
 
 }
 
