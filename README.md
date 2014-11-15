@@ -8,6 +8,20 @@ download and manipulate the data and some user friendly visualizations. It also
 replicates some famous analysis based on GEM data published in academic
 journals.
 
+## Installation
+
+``
+library("devtools")
+install_github("abaghan/rGEM")
+``
+
+## Usage
+
+```
+library("rGEM")
+dump_gem()
+```
+
 ## Meta
 
   * BugReports: <http://github.com/abaghan/rGEM/issues>
