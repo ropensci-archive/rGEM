@@ -3,10 +3,14 @@
 \alias{dump_gem}
 \title{Dumps all GEM data}
 \usage{
-dump_gem(keepZip = FALSE)
+dump_gem(keepZip = FALSE, overwrite = FALSE)
 }
 \arguments{
-\item{keepZip}{if true, leave the downloaded zip files in your 'gem.path', if FALSE, they will be deleted, default FALSE}
+\item{keepZip}{if TRUE, leave the downloaded zip files in your 'gem.path',
+if FALSE, they will be deleted, default FALSE}
+
+\item{overwirte}{if TRUE, skips downloading already existing data files, if
+FALSE, they will be downloaded again and owerwritten, default FALSE}
 }
 \description{
 Downloads all public GEM data from the GEM project website

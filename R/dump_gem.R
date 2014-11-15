@@ -12,7 +12,7 @@ dump_gem  <- function(keepZip=FALSE, overwrite=FALSE){
   # Checks the data directory 
   check_path()
 
-  load("data/gem_list.rda")
+  data("gem_list")
 
   # For all GEM public data
   for(cnt.data in gem.list$download.id){

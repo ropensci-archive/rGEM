@@ -13,7 +13,7 @@ get_gem_data <- function(gem.file.id, overwrite=FALSE, keepZip=FALSE){
 
   check_path()
 
-  load("data/gem_list.rda")
+  data("gem_list")
 
   gem.file <- sprintf("%s/%s", options("rgem.data.dir")
                       , gem.list[gem.list$download.id==gem.file.id, ]$file)
