@@ -1,25 +1,24 @@
 #' Downloads a set of GEM data and restores it in gem.path
 #' @description Downloads a set of public GEM data from the GEM project website
-#' @param gem.file.id if true, leave the downloaded zip files in your
-#' 'gem.path', if FALSE, they will be deleted
+#' @param gem_file_id if true, leave the downloaded zip files in your
+#' 'rgem.data.dir', if FALSE, they will be deleted
 #' @param overwirte if TRUE, skips downloading already existing data files, if
 #' FALSE, they will be downloaded again and owerwritten, default FALSE
-#' @param keepZip if true, leave the downloaded zip files in your 'gem.path',
+#' @param keep_zip if true, leave the downloaded zip files in your 'gem.path',
 #' if FALSE, they will be deleted
-
-get_gem_data <- function(gem.file.id, overwrite=FALSE, keepZip=FALSE){
+getGEMData <- function(gem_file_id, overwrite=FALSE, keep_zip=FALSE){
 
   gem.base.url <- "http://www.gemconsortium.org/docs/download/"
 
-  check_path()
+  checkPath()
 
   data("gem_list")
 
   gem.file <- sprintf("%s/%s", options("rgem.data.dir")
-                      , gem.list[gem.list$download.id==gem.file.id, ]$file)
-  gem.zip.file <- sprintf("%s/%s.zip", options("rgem.data.dir"), gem.file.id)
-  gem.zip.dir <- sprintf("%s/%s/", options("rgem.data.dir"), gem.file.id)
-  gem.url <- paste0(gem.base.url, gem.file.id)
+                      , gem.list[gem.list$download.id==gem_file_id, ]$file)
+  gem.zip.file <- sprintf("%s/%s.zip", options("rgem.data.dir"), gfile_idem.file.id)
+  gem.zip.dir <- sprintf("%s/%s/", options("rgem.data.dir"), gfile_idem.file.id)
+  gem.url <- paste0(gem.base.url, gfile_idem.file.id)
 
   # If owerrite = FALSE, skips the existing files
   if(!overwrite){
@@ -50,8 +49,8 @@ get_gem_data <- function(gem.file.id, overwrite=FALSE, keepZip=FALSE){
   ## Frees memory
   rm(gem)
   ## Unlinks (~deletes) temp and zip files
-  unlink(sprintf("%s/%s/", options("rgem.data.dir"), gem.file.id) , recursive=T)
-  if(!keepZip) 
-    unlink(sprintf("%s/%s.zip", options("rgem.data.dir"), gem.file.id), recursive=T)
+  unlink(sprintf("%s/%s/", options("rgem.data.dir"), gfile_idem.file.id) , recursive=T)
+  if(!keep_zip) 
+    unlink(sprintf("%s/%s.zip", options("rgem.data.dir"), gfile_idem.file.id), recursive=T)
 
 }
