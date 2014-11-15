@@ -25,7 +25,7 @@ dump_gem()
 ## Meta
 
   * BugReports: <http://github.com/abaghan/rGEM/issues>
-  * Version: 0.0.0.04
+  * Version: 0.0.0.05
   * Author: Abaghan Ghahraman <abaghan@gmail.com>
   * Maintainer: Abaghan Ghahraman <abaghan@gmail.com>
   * License: `MIT` + `License` file
