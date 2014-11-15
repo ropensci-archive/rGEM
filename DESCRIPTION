@@ -20,9 +20,6 @@ Imports:
     ggplot2,
     rmarkdown,
     memisc
-Depends:
-    foreign,
-    memisc
 LazyLoad: yes
 LazyData: yes
 VignetteBuilder: knitr
