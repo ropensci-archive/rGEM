@@ -10,10 +10,10 @@ journals.
 
 ## Installation
 
-``
+```
 library("devtools")
 install_github("abaghan/rGEM")
-``
+```
 
 ## Usage
 
