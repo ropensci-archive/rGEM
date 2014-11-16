@@ -50,8 +50,8 @@ getGEMData <- function(gem_file_id, overwrite = FALSE, keep_zip = FALSE){
   ## Frees memory
   rm(gem)
   ## Unlinks (~deletes) temp and zip files
-  unlink(sprintf("%s/%s/", options("rgem.data.dir"), gem_file_id) , recursive=T)
+  unlink(gem.zip.dir , recursive=T)
   if (!keep_zip)
-    unlink(sprintf("%s/%s.zip", options("rgem.data.dir"), gem_file_id), recursive=T)
+    unlink(gsm.zip.file, recursive=T)
 
 }
