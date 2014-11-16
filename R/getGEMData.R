@@ -16,7 +16,7 @@ getGEMData <- function(gem_file_id, overwrite = FALSE, keep_zip = FALSE){
   data("gem_list")
 
   gem.file <- sprintf("%s/%s", options("rgem.data.dir")
-                      , gem.list[gem.list$download.id==gem_file_id, ]$file)
+    , gem.list[gem.list$download.id==gem_file_id, ]$file)
   gem.zip.file <- sprintf("%s/%s.zip", options("rgem.data.dir"), gem_file_id)
   gem.zip.dir <- sprintf("%s/%s/", options("rgem.data.dir"), gem_file_id)
   gem.url <- paste0(gem.base.url, gem_file_id)
@@ -24,7 +24,7 @@ getGEMData <- function(gem_file_id, overwrite = FALSE, keep_zip = FALSE){
   # If owerrite = FALSE, skips the existing files
   if (!overwrite) {
     if (file.exists(gem.file)) {
-      print(paste0("File ", gem.file, "exist and skipped "))
+      message(paste0("File ", gem.file, "exist and skipped "))
       return()
     }
   }

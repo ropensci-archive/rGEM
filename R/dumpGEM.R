@@ -2,14 +2,14 @@
 #' @description Downloads all public GEM data from the GEM project website
 #' @param keep_zip if TRUE, leave the downloaded zip files in your 'gem.path',
 #' if FALSE, they will be deleted, default FALSE
-#' @param overwirte if TRUE, skips downloading already existing data files, if
-#' FALSE, they will be downloaded again and owerwritten, default FALSE
+#' @param overwrite if TRUE, skips downloading already existing data files, if
+#' FALSE, they will be downloaded again and overwritten, default FALSE
 #' @export
 #' @examples
 #' dump_gem()
-dumpGEM  <- function(keep_zip=FALSE, overwrite=FALSE){
+dumpGEM <- function(keep_zip = FALSE, overwrite = FALSE){
 
-  # Checks the data directory 
+  # Checks the data directory
   checkPath()
 
   data("gem_list")

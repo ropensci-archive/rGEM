@@ -7,12 +7,10 @@ checkPath <- function(){
 
   if(is.null(getOption('rgem.data.dir'))){
     message("A path is required to hold your GEM files")
-    user.path <- readline("Please enter the full path to download files into ( or hit ENTER to use default '~/rGEM/data'): ")
+    user.path <- readline(paste0("Please enter the full path to download "
+      , "files into (or hit ENTER to use default '~/rGEM/data'): "))
     user.path <- ifelse(grepl("", user.path)
-                        , paste(Sys.getenv("HOME")
-                                , "rGEM/data"
-                                , sep="/")
-                        , user.path)
+      , paste(Sys.getenv("HOME") , "rGEM/data" , sep="/") , user.path)
     options(rgem.data.dir = user.path)
   }
 
