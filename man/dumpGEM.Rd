@@ -9,13 +9,15 @@ dumpGEM(keep_zip = FALSE, overwrite = FALSE)
 \item{keep_zip}{if TRUE, leave the downloaded zip files in your 'gem.path',
 if FALSE, they will be deleted, default FALSE}
 
-\item{overwirte}{if TRUE, skips downloading already existing data files, if
-FALSE, they will be downloaded again and owerwritten, default FALSE}
+\item{overwrite}{if TRUE, skips downloading already existing data files, if
+FALSE, they will be downloaded again and overwritten, default FALSE}
 }
 \description{
 Downloads all public GEM data from the GEM project website
 }
 \examples{
-dump_gem()
+\dontrun{
+dumpGEM()
+}
 }
 

@@ -21,7 +21,7 @@ install_github("abaghan/rGEM")
 
 ```
 library("rGEM")
-dump_gem()
+dumpGEM()
 ```
 
 ## Meta

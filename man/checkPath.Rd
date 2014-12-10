@@ -6,6 +6,7 @@
 checkPath()
 }
 \description{
-Creates a new directory for GEM data if there is no one to store GEM data
+Creates a new directory for GEM data if there is no one to
+store GEM data
 }
 
