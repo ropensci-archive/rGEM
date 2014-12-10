@@ -6,7 +6,9 @@
 #' FALSE, they will be downloaded again and overwritten, default FALSE
 #' @export
 #' @examples
-#' dump_gem()
+#' \dontrun{
+#' dumpGEM()
+#' }
 dumpGEM <- function(keep_zip = FALSE, overwrite = FALSE){
 
   # Checks the data directory
