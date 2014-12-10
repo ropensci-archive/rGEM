@@ -20,6 +20,7 @@ Imports:
     ggplot2,
     rmarkdown,
     memisc,
+    knitr,
     rapport
 LazyLoad: yes
 LazyData: yes

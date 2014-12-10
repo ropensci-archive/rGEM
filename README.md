@@ -1,5 +1,7 @@
 # rGEM
 
+[![Build Status](https://travis-ci.org/ropensci/rGEM.svg?branch=travis)](https://travis-ci.org/ropensci/rGEM)
+
 ## Access data from Global Entrepreneurship Monitor (GEM) project
 
 This package is a wrapper around the HTTP access of the [Global Entrepreneurship
