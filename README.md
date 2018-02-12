@@ -1,6 +1,7 @@
 # rGEM
 
-[![Build Status](https://travis-ci.org/ropensci/rGEM.svg?branch=master)](https://travis-ci.org/ropensci/rGEM)
+[![Project Status: Abandoned – Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.](http://www.repostatus.org/badges/latest/abandoned.svg)](http://www.repostatus.org/#abandoned)
+<!-- [![Build Status](https://travis-ci.org/ropensci/rGEM.svg?branch=master)](https://travis-ci.org/ropensci/rGEM) -->
 
 ## Access data from Global Entrepreneurship Monitor (GEM) project
 
@@ -10,7 +11,7 @@ download and manipulate the data and some user friendly visualizations. It also
 replicates some famous analysis based on GEM data published in academic
 journals.
 
-## Installation
+<!-- ## Installation
 
 ```
 library("devtools")
@@ -22,7 +23,7 @@ install_github("abaghan/rGEM")
 ```
 library("rGEM")
 dumpGEM()
-```
+``` -->
 
 ## Meta
 
@@ -31,3 +32,4 @@ dumpGEM()
   * Author: Abaghan Ghahraman <abaghan@gmail.com>
   * Maintainer: Abaghan Ghahraman <abaghan@gmail.com>
   * License: `MIT` + `License` file
+
