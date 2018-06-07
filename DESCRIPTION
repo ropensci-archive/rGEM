@@ -6,8 +6,8 @@ Description: This package is a wrapper around the HTTP access of the Global
     provides an easy way to download and manipulate the data and some user
     friendly visualizations. It also replicates some famous analysis based on
     GEM data published in academic journals.
-URL: http://github.com/abaghan/rGEM
-BugReports: http://github.com/abaghan/rGEM/issues
+URL: http://github.com/ropensci/rGEM
+BugReports: http://github.com/ropensci/rGEM/issues
 Version: 0.0.0.05
 Date: 2014-11-15
 Authors@R: person("Abaghan", "Ghahraman", role = c("aut","cre")
